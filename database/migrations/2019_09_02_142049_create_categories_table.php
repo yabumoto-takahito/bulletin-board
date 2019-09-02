@@ -15,8 +15,10 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             //nullable指定をすると、指定した型だけでなくNULLも渡せるようになる。
             $table->string('category_name')->nullable();
+
             $table->timestamps();
         });
     }
