@@ -14,7 +14,7 @@ class CategoriesTableSeeder extends Seeder
       $param = [
         'category_name' => 'life',
         'category_name' => 'programing',
-        'category_name' => 'love'
+        'category_name' => 'love',
       ];
 
       DB::table('categories')->insert($param);

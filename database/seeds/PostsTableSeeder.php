@@ -22,16 +22,16 @@ class PostsTableSeeder extends Seeder
       $param = [
         'title' => 'hoge',
         'content' => 'test2',
-        'user_id' => 2,
-        'category_id' => 2,
+        'user_id' => 1,
+        'category_id' => 1,
       ];
       DB::table('posts')->insert($param);
 
       $param = [
         'title' => 'hoge',
         'content' => 'test3',
-        'user_id' => 3,
-        'category_id' => 3,
+        'user_id' => 1,
+        'category_id' => 1,
       ];
       DB::table('posts')->insert($param);
     }
