@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::get('/', 'PostController@index')->name('posts.index');
 
-Route::resource('posts', 'PostController');
+// Postコントローラへのリソースフルルートを登録
+Route::resource('posts', 'PostController', ['except' => ['index']]);
