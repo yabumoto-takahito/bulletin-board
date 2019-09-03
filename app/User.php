@@ -15,6 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    // 所謂ホワイトリスト。$fillableに指定したカラムのみ、create()やfill()、update()で値が代入される。
     protected $fillable = [
         'name', 'email', 'password',
     ];
