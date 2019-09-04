@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-
+        return view('posts.create');
     }
 
     /**
@@ -49,7 +49,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $post->load('category');
+        $post->load('category', 'user');
 
         return view('posts.show', ['post' => $post]);
     }
