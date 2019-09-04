@@ -17,9 +17,7 @@ class PostController extends Controller
         $posts = Post::all();
         $posts->load('category');
 
-        return view('posts.index', [
-            'posts' => $posts,
-        ]);
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -29,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -49,9 +47,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        $post->load('category');
+
+        return view('posts.show', ['post' => $post]);
     }
 
     /**
