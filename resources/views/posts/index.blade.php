@@ -22,7 +22,8 @@
                 </a>
             </h5>
             <h5 class="card-title">
-                投稿者：{{ $post->user->name }}
+                投稿者：
+                <a href="{{ route('users.show', $post->user_id) }}">{{ $post->user->name }}</a>
             </h5>
             <p class="card-text">
                 {{ $post->content }}
