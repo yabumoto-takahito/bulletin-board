@@ -24,6 +24,7 @@
                 {{ $post->content }}
             </p>
         </div>
+        <a href="{{ route('comments.create', ['post_id' => $post->id]) }}" class="btn btn-primary">コメントする</a>
     </div>
 
 </div>
