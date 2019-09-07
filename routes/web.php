@@ -26,5 +26,5 @@ Route::resource('/posts', 'PostController', ['except' => ['index']]);
 Route::resource('/users', 'UserController');
 
 // Commentsコントローラへのリソースフルルートを登録
-Route::resource('/comments', 'CommentController');
+Route::resource('/comments', 'CommentController')->middleware('auth');
 
