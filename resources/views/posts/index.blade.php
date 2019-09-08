@@ -1,6 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="card-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="card-title">検索フォーム</h5>
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <form action="" method="">
+                            <input type="text" class="form-control input-lg" placeholder="Buscar" />
+                            <span class="input-group-btn" style="position: relative; top: -37px; right: -166px;">
+                                <button class="btn btn-info" type="button">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="card-header">Board</div>
 <div class="card-body">
     @if (session('status'))
