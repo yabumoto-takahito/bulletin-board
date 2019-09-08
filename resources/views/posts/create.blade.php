@@ -22,14 +22,18 @@
 
     <div class="card">
         <div class="card-body">
-            <form action=" {{ route('posts.store') }} " method="post">
+            <form action=" {{ route('posts.store') }} " method="post" enctype="multipart/form-data">
                 @csrf
-
                 <!-- タイトル入力欄 -->
               <div class="form-group">
                 <label for="exampleInputTitle1">title</label>
                 <input type="text" class="form-control" id="exampleInputTitle1" placeholder="タイトル" name="title">
               </div>
+              <!-- 画像選択欄 -->
+                <div class="form-group">
+                  <label for="File">画像の選択</label>
+                  <input type="file" class="form-control-file" id="File" name="image">
+                </div>
               <!-- カテゴリー入力欄 -->
               <div class="form-group">
                 <label for="exampleInput1">category</label>
