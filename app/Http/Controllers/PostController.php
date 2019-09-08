@@ -20,13 +20,13 @@ class PostController extends Controller
 
         if (isset($q['category_id'])) {
 
-            $posts = Post::latest()->where('category_id', $q['category_id'])->get();
+            $posts = Post::latest()->where('category_id', $q['category_id'])->paginate(5);
             $posts->load('category', 'user');
 
             return view('posts.index', ['posts' => $posts]);
 
         } else {
-            $posts = Post::latest()->get();
+            $posts = Post::latest()->paginate(5);
             $posts->load('category', 'user');
 
             return view('posts.index', ['posts' => $posts]);

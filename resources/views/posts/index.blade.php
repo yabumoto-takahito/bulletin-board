@@ -30,7 +30,10 @@
             </p>
             <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">詳細</a>
           </div>
+        </div>
     @endforeach
+
+    {{ $posts->links() }}
 </div>
 
 @endsection
