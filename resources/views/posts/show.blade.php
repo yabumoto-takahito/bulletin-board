@@ -23,6 +23,7 @@
             <p class="card-text">
                 {{ $post->content }}
             </p>
+            <img src="{{ asset('storage/image/'.$post->image) }}">
         </div>
     </div>
 
