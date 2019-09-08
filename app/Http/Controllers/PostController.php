@@ -105,4 +105,12 @@ class PostController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+        $posts = Post::where('title', 'LIKE', "%$request->search%")
+                 ->orWhere('content', 'LIKE', "%$request->search%")
+                 ->paginate(5);
+        dd($posts);
+    }
 }

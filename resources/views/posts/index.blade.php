@@ -8,10 +8,11 @@
                 <h5 class="card-title">検索フォーム</h5>
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
-                        <form action="" method="">
-                            <input type="text" class="form-control input-lg" placeholder="Buscar" />
+                        <form action="{{ route('posts.search') }}" method="POST">
+                            @csrf
+                            <input type="text" class="form-control input-lg" placeholder="Buscar" name="search">
                             <span class="input-group-btn" style="position: relative; top: -37px; right: -166px;">
-                                <button class="btn btn-info" type="button">
+                                <button class="btn btn-info" type="submit">
                                     <i class="fas fa-search"></i>
                                 </button>
                             </span>
