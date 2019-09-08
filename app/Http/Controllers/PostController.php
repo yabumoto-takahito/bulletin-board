@@ -111,6 +111,12 @@ class PostController extends Controller
         $posts = Post::where('title', 'LIKE', "%$request->search%")
                  ->orWhere('content', 'LIKE', "%$request->search%")
                  ->paginate(5);
-        dd($posts);
+
+        $search_result = $request->search.'の検索結果'.count($posts).'件';
+
+        return view('posts.index', [
+            'posts' => $posts,
+            'search_result' => $search_result
+        ]);
     }
 }
