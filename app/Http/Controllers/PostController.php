@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 
 use App\Post;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -64,8 +65,15 @@ class PostController extends Controller
             $post->user_id = $request->user_id;
             $post->category_id = $request->category_id;
 
+            // 保存：storage/app/public
+            // 読込：public/storage
             $filename = $request->file('image')->store('public/image');
             $post->image = basename($filename);
+
+            // contentからtagを抽出
+            preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->content, $match);
+
+            dd($match);
 
             $post->save();
         }
