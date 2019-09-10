@@ -57,6 +57,8 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
+        // アップロードに成功したか確認
+        // isValidメソッドはファイルが存在しているかに付け加え,問題なくアップロードできたのかを確認することができる。
         if ($request->file('image')->isValid()) {
             $post = new Post;
 
@@ -70,12 +72,30 @@ class PostController extends Controller
             $filename = $request->file('image')->store('public/image');
             $post->image = basename($filename);
 
-            // contentからtagを抽出
+            //contentからtagを抽出
+            //preg_match_all：繰り返し正規表現検索を行う。正規表現にマッチすると、そのマッチした文字列の後から検索が続行される。引数は、検索するパターンを表す文字列、入力文字列、マッチしたすべての内容を含む、flagsで指定した形式の多次元配列。
             preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->content, $match);
 
-            dd($match);
+            //$match[0]はパターン全体にマッチした文字列の配列、$match[1]は第1のキャプチャ用サブパターンにマッチした文字列の配列といった順番となる。
+            // firstOrCreate()：DBにデータが存在する場合は取得し、存在しない場合はDBにデータを登録した上でインスタンスを取得する
+            $tags = [];
+            foreach ($match[1] as $tag) {
+                $found = Tag::firstOrCreate(['tag_name' => $tag]);
+
+                // array_push：一つ以上の要素を配列の最後に追加する
+                array_push($tags, $found);
+            }
+
+            //$tagsからIDのみ抽出
+            $tag_ids = [];
+            foreach ($tags as $tag) {
+                array_push($tag_ids, $tag['id']);
+            }
 
             $post->save();
+
+            // attachメソッドにタグIDの配列を渡すことによって、中間テーブルにタグを登録してくれる。
+            $post->tags()->attach($tag_ids);
         }
 
             return redirect('/');
