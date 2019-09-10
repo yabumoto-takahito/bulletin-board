@@ -40,7 +40,7 @@
     @foreach($posts as $post)
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">
+            <h5 class="card-title">タイトル：
                 {{ $post->title }}
             </h5>
             <h5 class="card-title">
@@ -50,9 +50,18 @@
                 </a>
             </h5>
             <h5 class="card-title">
+                タグ：
+                @foreach ($post->tags as $tag)
+                #<a href="{{ route('posts.index', ['tag_name' => '#'.$tag->tag_name]) }}">
+                    {{ $tag->tag_name }}
+                </a>,&ensp;
+                @endforeach
+            </h5>
+            <h5 class="card-title">
                 投稿者：
                 <a href="{{ route('users.show', $post->user_id) }}">{{ $post->user->name }}</a>
             </h5>
+            <hr>
             <p class="card-text">
                 {{ $post->content }}
             </p>
@@ -63,6 +72,9 @@
 
     @if (isset($category_id))
         {{ $posts->appends(['category_id' => $category_id])->links() }}
+
+    @elseif (isset($tag_name))
+        {{ $posts->appends(['tag_name' => $tag_name])->links() }}
 
     @elseif (isset($search_query))
         {{ $posts->appends(['search' => $search_query])->links() }}
