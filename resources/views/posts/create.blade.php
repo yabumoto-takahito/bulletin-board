@@ -22,6 +22,7 @@
 
     <div class="card">
         <div class="card-body">
+            <!-- enctype="multipart/form-data"を指定しない場合、添付ファイルの情報を送信できない -->
             <form action=" {{ route('posts.store') }} " method="post" enctype="multipart/form-data">
                 @csrf
                 <!-- タイトル入力欄 -->

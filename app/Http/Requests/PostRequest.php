@@ -28,7 +28,16 @@ class PostRequest extends FormRequest
             'content' => 'required',
             'user_id' => 'required|numeric',
             'category_id' => 'required|numeric',
-            'image' => 'required|file|image'
+            'image' => 'file|image'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'タイトルは必ず入力して下さい。',
+            'content.required' => '本文は必ず入力して下さい。',
+            'category_id.required' => 'カテゴリーは必ず選択して下さい。'
         ];
     }
 }

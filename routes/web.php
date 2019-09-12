@@ -21,7 +21,7 @@ Route::get('/', 'PostController@index')->name('posts.index');
 
 Route::get('/posts/search', 'PostController@search')->name('posts.search');
 
-// Postsコントローラへのリソースフルルートを登録
+// Postsコントローラへのリソースフルルートを登録。しかし、
 Route::resource('/posts', 'PostController', ['except' => ['index']]);
 
 // Usersコントローラへのリソースフルルートを登録
