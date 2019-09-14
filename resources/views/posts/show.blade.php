@@ -41,8 +41,7 @@
             </div>
         </div>
         @endforeach
-        <a href="{{ route('comments.create', ['post_id' => $post->id]) }}" class="btn btn-primary">コメントする</a>
-        <like></like>
+        <like></like><a href="{{ route('comments.create', ['post_id' => $post->id]) }}" class="btn btn-primary">コメントする</a>
     </div>
 
 </div>
