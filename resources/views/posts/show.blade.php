@@ -27,6 +27,14 @@
         </div>
     </div>
 
+    <like
+    :post-id="{{ json_encode($post->id) }}"
+    >
+    </like>
+    <a href="{{ route('comments.create', ['post_id' => $post->id]) }}" class="btn btn-primary">
+        コメントする
+    </a>
+
     <div class="p-3">
         <h5 class="card-title">コメント一覧</h5>
         @foreach($post->comments as $comment)
@@ -41,7 +49,6 @@
             </div>
         </div>
         @endforeach
-        <like></like><a href="{{ route('comments.create', ['post_id' => $post->id]) }}" class="btn btn-primary">コメントする</a>
     </div>
 
 </div>
