@@ -1879,14 +1879,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['postId', 'userId', 'defaultLiked'],
+  props: ['postId', 'userId', 'defaultLiked', 'defaultCount'],
   data: function data() {
     return {
-      liked: false
+      liked: false,
+      likeCount: 0
     };
   },
   created: function created() {
     this.liked = this.defaultLiked;
+    this.likeCount = this.defaultCount;
   },
   methods: {
     like: function like(postId) {
@@ -1897,6 +1899,7 @@ __webpack_require__.r(__webpack_exports__);
         user_id: this.userId
       }).then(function (response) {
         _this.liked = true;
+        _this.likeCount = response.data.likeCount;
       })["catch"](function (error) {
         alert(error);
       });
@@ -1909,6 +1912,7 @@ __webpack_require__.r(__webpack_exports__);
         user_id: this.userId
       }).then(function (response) {
         _this2.liked = false;
+        _this2.likeCount = response.data.likeCount;
       })["catch"](function (error) {
         alert(error);
       });
@@ -37272,7 +37276,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Like！")]
+          [_vm._v("いいね " + _vm._s(_vm.likeCount))]
         )
       : _c(
           "button",
@@ -37285,7 +37289,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Liked！")]
+          [_vm._v("いいね " + _vm._s(_vm.likeCount))]
         )
   ])
 }

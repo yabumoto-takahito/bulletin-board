@@ -15,8 +15,9 @@ class LikeController extends Controller
         'user_id' => $request->user_id,
         'post_id' => $post->id
        ]);
+      $likeCount = count(Like::where('post_id', $post->id)->get());
 
-      return response()->json([]);
+      return response()->json(['likeCount' => $likeCount]);
     }
 
     public function unlike(Post $post, Request $request)
@@ -24,8 +25,9 @@ class LikeController extends Controller
 
       $like = Like::where('user_id', $request->user_id)->where('post_id', $post->id)->first();
       $like->delete();
+      $likeCount = count(Like::where('post_id', $post->id)->get());
 
-      return response()->json([]);
+      return response()->json(['likeCount' => $likeCount]);
     }
 
 }

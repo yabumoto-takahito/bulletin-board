@@ -1,20 +1,22 @@
 <template>
     <div>
-        <button v-if="!liked" type="button" class="btn btn-primary" @click="like(postId)">Like！</button>
-        <button v-else type="button" class="btn btn-primary" @click="unlike(postId)">Liked！</button>
+        <button v-if="!liked" type="button" class="btn btn-primary" @click="like(postId)">いいね {{ likeCount }}</button>
+        <button v-else type="button" class="btn btn-primary" @click="unlike(postId)">いいね {{ likeCount }}</button>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['postId', 'userId', 'defaultLiked'],
+        props: ['postId', 'userId', 'defaultLiked', 'defaultCount'],
         data() {
             return {
                 liked: false,
+                likeCount: 0,
             };
         },
         created() {
             this.liked = this.defaultLiked
+            this.likeCount = this.defaultCount
         },
 
         methods: {
@@ -26,6 +28,7 @@
                 })
                 .then(response => {
                     this.liked = true
+                    this.likeCount = response.data.likeCount
                 })
                 .catch(error => {
                     alert(error)
@@ -41,6 +44,7 @@
 
                 .then(response => {
                     this.liked = false
+                    this.likeCount = response.data.likeCount
                 })
                 .catch(error => {
                     alert(error)
