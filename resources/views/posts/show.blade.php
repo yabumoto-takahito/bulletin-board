@@ -29,6 +29,8 @@
 
     <like
     :post-id="{{ json_encode($post->id) }}"
+    :user-id="{{ json_encode($userAuth->id) }}"
+    :default-liked="{{ json_encode($defaultLiked) }}"
     >
     </like>
     <a href="{{ route('comments.create', ['post_id' => $post->id]) }}" class="btn btn-primary">

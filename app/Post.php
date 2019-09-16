@@ -28,4 +28,8 @@ class Post extends Model
       return $this->belongsToMany('App\Tag');
       // return $this->belongsToMany(\App\Tag::class);
     }
+
+    public function likes() {
+      return $this->hasMany('App\Like');
+    }
 }

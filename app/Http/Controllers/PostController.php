@@ -117,9 +117,22 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $post->load('category', 'user', 'comments.user');
+        $post->load('category', 'user', 'comments.user', 'likes');
 
-        return view('posts.show', ['post' => $post]);
+        $userAuth = \Auth::user();
+        $defaultLiked = $post->likes->where('user_id', $userAuth->id)->first();
+
+        if (count($defaultLiked) == 0) {
+            $defaultLiked == false;
+        } else {
+            $defaultLiked == true;
+        }
+
+        return view('posts.show',[
+            'post' => $post,
+            'userAuth' => $userAuth,
+            'defaultLiked' => $defaultLiked
+        ]);
     }
 
     /**

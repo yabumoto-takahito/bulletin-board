@@ -1,21 +1,46 @@
 <template>
     <div>
-        <button type="button" class="btn btn-primary" @click="submit(postId)">いいね！</button>
+        <button v-if="!liked" type="button" class="btn btn-primary" @click="like(postId)">Like！</button>
+        <button v-else type="button" class="btn btn-primary" @click="unlike(postId)">Liked！</button>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['postId'],
+        props: ['postId', 'userId', 'defaultLiked'],
+        data() {
+            return {
+                liked: false,
+            };
+        },
+        created() {
+            this.liked = this.defaultLiked
+        },
 
         methods: {
-            submit(postId) {
+            like(postId) {
                 let url = `/api/posts/${postId}/like`
 
-                axios.post(url)
+                axios.post(url, {
+                    user_id: this.userId
+                })
                 .then(response => {
+                    this.liked = true
+                })
+                .catch(error => {
+                    alert(error)
+                });
+            },
 
+            unlike(postId) {
+                let url = `/api/posts/${postId}/unlike`
 
+                axios.post(url, {
+                    user_id: this.userId
+                })
+
+                .then(response => {
+                    this.liked = false
                 })
                 .catch(error => {
                     alert(error)
