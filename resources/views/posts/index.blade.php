@@ -40,27 +40,27 @@
     @foreach($posts as $post)
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">タイトル：
+            <p class="card-title">タイトル：
                 {{ $post->title }}
-            </h5>
-            <h5 class="card-title">
+            </p>
+            <p class="card-title">
                 カテゴリー：
                 <a href="{{ route('posts.index', ['category_id' => $post->category_id]) }}">
                     {{ $post->category->category_name }}
                 </a>
-            </h5>
-            <h5 class="card-title">
+            </p>
+            <p class="card-title">
                 タグ：
                 @foreach ($post->tags as $tag)
                 #<a href="{{ route('posts.index', ['tag_name' => '#'.$tag->tag_name]) }}">
                     {{ $tag->tag_name }}
                 </a>,&ensp;
                 @endforeach
-            </h5>
-            <h5 class="card-title">
+            </p>
+            <p class="card-title">
                 投稿者：
                 <a href="{{ route('users.show', $post->user_id) }}">{{ $post->user->name }}</a>
-            </h5>
+            </p>
             <hr>
             <p class="card-text">
                 {{ $post->content }}
