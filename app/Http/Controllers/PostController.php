@@ -75,7 +75,7 @@ class PostController extends Controller
             $post->user_id = $request->user_id;
             $post->category_id = $request->category_id;
 
-            // 保存：storage/app/public
+            // 保存：storage/app/public/image
             // 読込：public/storage
             $filename = $request->file('image')->store('public/image');
             $post->image = basename($filename);
