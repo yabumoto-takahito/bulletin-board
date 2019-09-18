@@ -24,14 +24,9 @@
             <p class="card-text">
                 {{ $post->content }}
             </p>
+            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary btn-sm">編集</a>
+            <a href="{{ route('posts.destroy', $post->id) }}" class="btn btn-danger btn-sm btn-dell">削除</a>
         </div>
-        <!-- <a href="{{ route('posts.edit', ['post_id' => $post->id ]) }}" class="btn btn-primary btn-sm">編集</a> -->
-        <!-- <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">詳細を見る</a> -->
-<!--         <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-            <input type="submit" value="削除" class="btn btn-danger btn-sm btn-dell">
-            @csrf
-        </form> -->
-        <a href="{{ route('posts.destroy', $post->id) }}" class="btn btn-primary btn-sm btn-dell">削除</a>
     </div>
     @endforeach
 

@@ -22,10 +22,13 @@ Route::get('/', 'PostController@index')->name('posts.index');
 
 Route::get('posts/{post}/delete', 'PostController@destroy')->name('posts.destroy');
 
+Route::post('posts/{post}/update', 'PostController@update')->name('posts.update');
+
 Route::get('/posts/search', 'PostController@search')->name('posts.search');
 
 // Postsコントローラへのリソースフルルートを登録。
-Route::resource('/posts', 'PostController', ['except' => ['index', 'destroy']]);
+Route::resource('/posts', 'PostController', ['except' => ['index', 'destroy', 'update']]);
+
 
 // Usersコントローラへのリソースフルルートを登録
 Route::resource('/users', 'UserController');
