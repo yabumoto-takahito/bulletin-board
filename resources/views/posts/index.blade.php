@@ -76,7 +76,7 @@
                         投稿者：
                         <a href="{{ route('users.show', $post->user_id) }}">{{ $post->user->name }}</a>
                     </p>
-                    <div class="card" style="height: 100px; margin-bottom: 20px;">
+                    <div class="card" style="height: 120px; margin-bottom: 20px;">
                         <p class="card-text" style="padding: 10px 0 15px 15px;">
                             {{ $post->content }}
                         </p>
