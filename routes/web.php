@@ -31,3 +31,4 @@ Route::resource('/users', 'UserController');
 // Commentsコントローラへのリソースフルルートを登録
 Route::resource('/comments', 'CommentController')->middleware('auth');
 
+Route::get('/mail/send', 'MailController@send')->name('mail.send');

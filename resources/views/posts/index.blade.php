@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card-body">
+<div class="card-body" style="padding-bottom: 0;">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h5 class="card-title">検索フォーム</h5>
+                <h5 class="card-title" style="padding-left: 20px">検索フォーム</h5>
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
                         <form action="{{ route('posts.search') }}" method="get">
                             @csrf
-                            <input type="text" class="form-control input-lg" placeholder="Buscar" name="search">
+                            <input type="text" class="form-control input-lg" placeholder="サイト内検索" name="search">
                             <span class="input-group-btn" style="position: relative; top: -37px; right: -166px;">
                                 <button class="btn btn-info" type="submit">
                                     <i class="fas fa-search"></i>
@@ -27,7 +27,7 @@
 <div class="card-header">Board</div>
 
 @if (isset($search_result))
-    <h5 class="card-title">{{ $search_result }}</h5>
+    <h5 class="card-title" style="padding: 20px 0 0 30px; margin-bottom: 0;">{{ $search_result }}</h5>
 @endif
 
 <div class="card-body">
