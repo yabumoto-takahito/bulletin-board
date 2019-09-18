@@ -138,6 +138,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        // dd($post);
         $post->load('category', 'user', 'comments.user', 'likes');
 
         $userAuth = \Auth::user();
@@ -168,7 +169,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -189,9 +190,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post = Post::find($post->id);
+        $post->delete();
+        // return view('users.edit', [
+        //     'user' => $user
+        // ]);
+        return redirect('/');
     }
 
     public function search(Request $request)

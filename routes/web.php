@@ -20,10 +20,12 @@ Auth::routes();
 // 名前付きルート：名前付きルートは特定のルートへのURLを生成したり、リダイレクトしたりする場合に便利です。ルート定義にnameメソッドをチェーンすることで、そのルートに名前がつけられる。ルートに一度名前を付ければ、その名前をグローバルなroute関数で使用することで、URLを生成したり、リダイレクトしたりできる。
 Route::get('/', 'PostController@index')->name('posts.index');
 
+Route::get('posts/{post}/delete', 'PostController@destroy')->name('posts.destroy');
+
 Route::get('/posts/search', 'PostController@search')->name('posts.search');
 
 // Postsコントローラへのリソースフルルートを登録。
-Route::resource('/posts', 'PostController', ['except' => ['index']]);
+Route::resource('/posts', 'PostController', ['except' => ['index', 'destroy']]);
 
 // Usersコントローラへのリソースフルルートを登録
 Route::resource('/users', 'UserController');
