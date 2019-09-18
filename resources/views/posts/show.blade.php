@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card-header">Board</div>
+<div class="card-header">投稿の詳細</div>
 <div class="card-body">
     @if (session('status'))
         <div class="alert alert-success" role="alert">
