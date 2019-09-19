@@ -99,7 +99,28 @@
         </div>
     </div>
     <div id="profile" class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
-        プロフィールの文章です。...
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($users as $user)
+                <tr>
+                    <th scope="row">
+                        <a href="{{ route('users.show', $user->id) }}">
+                            {{ $user->id }}
+                        </a>
+                    </th>
+                    <td>
+                        {{ $user->name }}
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>
 

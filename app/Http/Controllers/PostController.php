@@ -18,6 +18,8 @@ class PostController extends Controller
      */
     public function index()
     {
+        $users = User::all();
+
         $q = \Request::query();
 
         if (isset($q['category_id'])) {
@@ -26,7 +28,8 @@ class PostController extends Controller
 
             return view('posts.index', [
                 'posts' => $posts,
-                'category_id' => $q['category_id']
+                'category_id' => $q['category_id'],
+                'users' => $users
             ]);
 
         } elseif (isset($q['tag_name'])) {
@@ -35,7 +38,8 @@ class PostController extends Controller
             $posts->load('category', 'user', 'tags');
             return view('posts.index', [
                 'posts' => $posts,
-                'tag_name' => $q['tag_name']
+                'tag_name' => $q['tag_name'],
+                'users' => $users
             ]);
 
         } else {
@@ -43,7 +47,8 @@ class PostController extends Controller
             $posts->load('category', 'user', 'tags');
 
             return view('posts.index', [
-                'posts' => $posts
+                'posts' => $posts,
+                'users' => $users
             ]);
         }
     }
@@ -252,7 +257,6 @@ class PostController extends Controller
         return view('users.edit', [
             'user' => $post->user
         ]);
-
     }
 
     /**
@@ -280,10 +284,13 @@ class PostController extends Controller
 
         $search_result = $request->search.'の検索結果'.$posts->total().'件';
 
+        $users = User::all();
+
         return view('posts.index', [
             'posts' => $posts,
             'search_result' => $search_result,
-            'search_query' => $request->search
+            'search_query' => $request->search,
+            'users' => $users
         ]);
     }
 }

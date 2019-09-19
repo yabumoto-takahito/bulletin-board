@@ -27,7 +27,8 @@
             </div>
             <!-- <img src="{{ asset('storage/image/'.$post->image) }}"> -->
             <!-- <img src="{{ asset('public/images/'.$post->image) }}"> -->
-            <img src="{{ asset('/images/'.$post->image) }}">
+            <img src="{{ asset('/images/'.$post->image) }}" class="img-fluid" alt="Responsive image">
+
         </div>
     </div>
 
