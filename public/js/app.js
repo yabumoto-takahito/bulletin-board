@@ -37276,7 +37276,10 @@ var render = function() {
               }
             }
           },
-          [_vm._v("いいね " + _vm._s(_vm.likeCount))]
+          [
+            _c("i", { staticClass: "far fa-thumbs-up" }),
+            _vm._v(" いいね " + _vm._s(_vm.likeCount))
+          ]
         )
       : _c(
           "button",
@@ -37289,7 +37292,10 @@ var render = function() {
               }
             }
           },
-          [_vm._v("いいね " + _vm._s(_vm.likeCount))]
+          [
+            _c("i", { staticClass: "far fa-thumbs-up" }),
+            _vm._v(" いいね " + _vm._s(_vm.likeCount))
+          ]
         )
   ])
 }

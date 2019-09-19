@@ -12,18 +12,20 @@
     @foreach($user->posts as $post)
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">
-                {{ $post->title }}
-            </h5>
-            <h5 class="card-title">
-                カテゴリー：{{ $post->category->category_name }}
-            </h5>
-            <h5 class="card-title">
-                投稿者：{{ $post->user->name }}
-            </h5>
-            <p class="card-text">
-                {{ $post->content }}
+            <p class="card-title">
+                <i class="fas fa-pen-alt"></i>&ensp;タイトル：{{ $post->title }}
             </p>
+            <p class="card-title">
+                <i class="fas fa-book"></i>&ensp;カテゴリー：{{ $post->category->category_name }}
+            </p>
+            <p class="card-title">
+                <i class="fas fa-user"></i>&ensp;投稿者：{{ $post->user->name }}
+            </p>
+            <div class="card" style="height: 120px; margin-bottom: 20px;">
+                <p class="card-text" style="padding: 10px 0 15px 15px;">
+                    {{ $post->content }}
+                </p>
+            </div>
         </div>
     </div>
     @endforeach

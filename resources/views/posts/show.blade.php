@@ -9,25 +9,25 @@
         </div>
     @endif
 
-    <div class="card">
+    <div class="card" style="margin-bottom: 20px;">
         <div class="card-body">
             <p class="card-title">
-                タイトル：{{ $post->title }}
+                <i class="fas fa-pen-alt"></i>&ensp;タイトル：{{ $post->title }}
             </p>
             <p class="card-title">
-                カテゴリー：{{ $post->category->category_name }}
+                <i class="fas fa-book"></i>&ensp;カテゴリー：{{ $post->category->category_name }}
             </p>
             <p class="card-title">
-                投稿者：{{ $post->user->name }}
+                <i class="fas fa-user"></i>&ensp;投稿者：{{ $post->user->name }}
             </p>
-            <hr>
-            <p class="card-text">
-                {{ $post->content }}
-            </p>
+            <div class="card" style="height: 120px; margin-bottom: 20px;">
+                <p class="card-text" style="padding: 10px 0 15px 15px;">
+                    {{ $post->content }}
+                </p>
+            </div>
             <!-- <img src="{{ asset('storage/image/'.$post->image) }}"> -->
             <!-- <img src="{{ asset('public/images/'.$post->image) }}"> -->
             <img src="{{ asset('/images/'.$post->image) }}">
-            </p>
         </div>
     </div>
 
@@ -40,11 +40,13 @@
     >
     </like>
     <a href="{{ route('comments.create', ['post_id' => $post->id]) }}" class="btn btn-primary" style="margin-top: 10px;">
-        コメントする
+        <i class="fas fa-pen-alt"></i>&ensp;コメントする
     </a>
 
     <div class="p-3" style="margin-top: 20px;">
-        <h5 class="card-title">コメント一覧</h5>
+        <h5 class="card-title">
+            <i class="far fa-comments"></i>&ensp;コメント一覧
+        </h5>
         @foreach($post->comments as $comment)
         <div class="card">
             <div class="card-body">
